@@ -1,0 +1,53 @@
+//chp 38 Collections Transformations
+// involve operations to produce new collection.
+//By applying function to elements of an existing collection
+//map,flatMap,filter, zip, associate, flatten, distinct
+
+fun main (){
+
+    val list = listOf(1,2,3,4)
+
+    val firstElement  = list.first ()
+    val nullableFirstElement = list.firstOrNull()
+    println(firstElement)
+
+    val lastElement = list.last()
+    val lastElementNullable = list.lastOrNull()
+    println(lastElement)
+
+    val filteredList = list.filter { item->item % 2 == 0 }
+    println(filteredList)
+
+    val List2 = list.map { item-> item * 2 }
+    println(List2)
+
+    val groupBy = list.groupBy { item -> item %2 ==0 }
+    println(groupBy)
+
+
+    val disList = list.distinct()
+    println (disList)
+
+    val sortList = list.sorted()
+    println(sortList)
+
+    val revList = list.reversed()
+    println(revList)
+
+    //associateBy takes lambda that returns the key for each element
+    data class Person(val name: String, val age: Int)
+    val people = listOf(Person("Alice", 29), Person("Bob", 31), Person("Carol", 31)
+    )
+        val mapByName = people.associateBy {it.name}
+    val mapByNameAGe = people.associateBy ({it.name} , {it.age})
+    println (mapByName)
+    println (mapByNameAGe)
+
+
+    //associate With takes lambda transform element into value . uses original element as key
+    val list2 = listOf("a", "b", "c")
+    val map = list2.associateWith { it.length }
+    println(map)
+
+    //partition higher order function not a collection used to return pair of lists
+}
